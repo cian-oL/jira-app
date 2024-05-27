@@ -1,10 +1,25 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import Layout from "@/layouts/Layout";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<div>Home Page</div>} />
-      <Route path="/register" element={<div>Resgistration Page</div>} />
+      <Route
+        path="/"
+        element={
+          <Layout>
+            <div>Home Page</div>
+          </Layout>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <Layout>
+            <div>Registration Page</div>
+          </Layout>
+        }
+      />
       <Route path="*" element={<Navigate to="/" replace={true} />} />
     </Routes>
   );
