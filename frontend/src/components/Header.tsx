@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { Button } from "./ui/button";
+import UserDropDownMenu from "./UserDropDownMenu";
 
 const Header = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   return (
     <header className="bg-indigo-600 text-white py-5">
@@ -15,12 +16,16 @@ const Header = () => {
         >
           MyJiraApp
         </Link>
-        <Button
-          onClick={async () => await loginWithRedirect()}
-          className="bg-amber-300 font-bold text-black hover:bg-white"
-        >
-          Sign In
-        </Button>
+        {isAuthenticated ? (
+          <UserDropDownMenu />
+        ) : (
+          <Button
+            onClick={async () => await loginWithRedirect()}
+            className="bg-amber-300 font-bold text-black hover:bg-white"
+          >
+            Sign In
+          </Button>
+        )}
       </div>
     </header>
   );
