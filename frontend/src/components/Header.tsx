@@ -8,7 +8,7 @@ const Header = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   return (
-    <header className="bg-indigo-600 text-white py-5">
+    <header className="bg-indigo-600 text-white py-10">
       <div className="container mx-auto flex justify-between items-center">
         <Link
           to="/"
