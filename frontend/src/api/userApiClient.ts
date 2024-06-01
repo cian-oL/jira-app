@@ -6,10 +6,15 @@ import { User, CreateUserData, UserProfileData } from "@/types/types";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const useCreateUser = () => {
+  const { getAccessTokenSilently } = useAuth0();
+
   const createUserRequest = async (createUserData: CreateUserData) => {
+    const accessToken = await getAccessTokenSilently();
+
     const response = await fetch(`${API_BASE_URL}/api/user`, {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(createUserData),
@@ -64,7 +69,7 @@ export const useUpdateCurrentUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
   const updateCurrentUserRequest = async (userProfileData: UserProfileData) => {
-    const accessToken = getAccessTokenSilently();
+    const accessToken = await getAccessTokenSilently();
 
     const response = await fetch(`${API_BASE_URL}/api/user`, {
       method: "PUT",
