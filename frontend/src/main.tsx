@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import App from "./App.tsx";
 import "./index.css";
 import Auth0ProviderWithNavigate from "./auth/Auth0ProviderWithNavigate.tsx";
+import { Toaster } from "./components/ui/sonner.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,12 +18,13 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
         <Auth0ProviderWithNavigate>
           <App />
+          <Toaster position="top-right" richColors />
         </Auth0ProviderWithNavigate>
-      </QueryClientProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </QueryClientProvider>
   </React.StrictMode>
 );
