@@ -6,10 +6,15 @@ import UserProfilePage from "./pages/UserProfilePage";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import KanbanPage from "./pages/KanbanPage";
+import KanbanLayout from "./layouts/KanbanLayout";
+import BacklogPage from "./pages/BacklogPage";
+import CreateIssuePage from "./pages/CreateIssuePage";
+import IssuesPage from "./pages/IssuesPage";
 
 function App() {
   return (
     <Routes>
+      {/* === HOME & PROFILE PAGES */}
       <Route
         path="/"
         element={
@@ -28,16 +33,50 @@ function App() {
           }
         />
       </Route>
-      {/* <Route element={<ProtectedRoute />}> */}
-      <Route
-        path="/kanban"
-        element={
-          <Layout>
-            <KanbanPage />
-          </Layout>
-        }
-      />
-      {/* </Route> */}
+
+      {/* === KANBAN & TASK PAGES ===  */}
+      <Route element={<ProtectedRoute />}>
+        <Route
+          path="/kanban"
+          element={
+            <KanbanLayout>
+              <KanbanPage />
+            </KanbanLayout>
+          }
+        />
+      </Route>
+      <Route element={<ProtectedRoute />}>
+        <Route
+          path="/backlog"
+          element={
+            <Layout>
+              <BacklogPage />
+            </Layout>
+          }
+        />
+      </Route>
+      <Route element={<ProtectedRoute />}>
+        <Route
+          path="/issues"
+          element={
+            <Layout>
+              <IssuesPage />
+            </Layout>
+          }
+        />
+      </Route>
+      <Route element={<ProtectedRoute />}>
+        <Route
+          path="/create-issue"
+          element={
+            <Layout>
+              <CreateIssuePage />
+            </Layout>
+          }
+        />
+      </Route>
+
+      {/* === AUTH PAGE === */}
       <Route
         path="/auth-callback"
         element={
