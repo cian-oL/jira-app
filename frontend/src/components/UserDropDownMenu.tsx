@@ -11,20 +11,25 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
+import { useGetCurrentUser } from "@/api/userApiClient";
 
 const UserDropDownMenu = () => {
   const { logout } = useAuth0();
+  const { currentUser, isLoading: isGetLoading } = useGetCurrentUser();
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="bg-amber-300 rounded p-1 text-black hover:bg-white">
+      <DropdownMenuTrigger className="flex gap-2 bg-amber-300 rounded p-2 text-black font-bold hover:bg-white">
         <User />
+        {currentUser?.name}
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-indigo-500 text-white mr-2">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel className="font-extrabold text-lg underline">
+          My Account
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Link to="/profile">Profile</Link>
+          <Link to="/profile">Profile Settings</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <Button
