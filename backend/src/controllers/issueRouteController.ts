@@ -51,10 +51,7 @@ const getAllIssues = async (req: Request, res: Response) => {
       return res.status(404).json({ message: "Issues not found" });
     }
 
-    return res.status(200).json({
-      count: issues.length,
-      data: issues,
-    });
+    return res.status(200).json({ issues });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Something went wrong" });
