@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout";
 import AuthCallbackPage from "./pages/AuthCallbackPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         path="/"
         element={
           <Layout>
-            <div>Home Page</div>
+            <HomePage />
           </Layout>
         }
       />
