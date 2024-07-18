@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import { Button } from "./ui/button";
 import UserDropDownMenu from "./UserDropDownMenu";
+import Navbar from "./Navbar";
 
 const Header = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
@@ -16,6 +17,7 @@ const Header = () => {
         >
           MyJiraApp
         </Link>
+        {isAuthenticated && <Navbar />}
         {isAuthenticated ? (
           <UserDropDownMenu />
         ) : (
