@@ -1,3 +1,5 @@
+// === USER TYPES ===
+
 export type User = {
   _id: string;
   email: string;
@@ -13,4 +15,11 @@ export type CreateUserData = {
 export type UserProfileData = {
   email: string;
   name: string;
+};
+
+// === KANBAN BOARD TYPES ===
+
+export type Column = {
+  columnId: string;
+  title: string;
 };

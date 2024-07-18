@@ -5,6 +5,7 @@ import AuthCallbackPage from "./pages/AuthCallbackPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import HomePage from "./pages/HomePage";
+import KanbanPage from "./pages/KanbanPage";
 
 function App() {
   return (
@@ -27,6 +28,16 @@ function App() {
           }
         />
       </Route>
+      {/* <Route element={<ProtectedRoute />}> */}
+      <Route
+        path="/kanban"
+        element={
+          <Layout>
+            <KanbanPage />
+          </Layout>
+        }
+      />
+      {/* </Route> */}
       <Route
         path="/auth-callback"
         element={
